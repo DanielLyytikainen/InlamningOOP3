@@ -1,12 +1,14 @@
 import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class Game extends JFrame {
 
-    ArrayList<JButton> buttons = new ArrayList<>();
+    List<JButton> buttons = new ArrayList<>();
     JPanel gamePanel = new JPanel();
     JPanel buttonPanel = new JPanel();
     JPanel selectionPanel = new JPanel();
@@ -43,8 +45,6 @@ public class Game extends JFrame {
         setVisible(true);
         newGameButton.addActionListener((ActionEvent e) -> NewGame());
         quickSolve.addActionListener((ActionEvent e) -> QuickSolve());
-
-
     }
 
     private void NewGame() {
@@ -69,7 +69,7 @@ public class Game extends JFrame {
             Collections.swap(buttons, clickedButton, textEmpty);
             UpdateGamePanel();
             if (didIWin()) {
-                JOptionPane.showMessageDialog(null, "Congratulations! You win!");
+                JOptionPane.showMessageDialog(buttonPanel, "Congratulations! You win!");
             }
 
         }
