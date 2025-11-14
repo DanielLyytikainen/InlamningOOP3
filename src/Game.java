@@ -27,7 +27,7 @@ public class Game extends JFrame {
         gamePanel.add(buttonPanel, BorderLayout.CENTER);
 
 
-        for (int i = 1; i < 9; i++) {
+        for (int i = 1; i < 15; i++) {
             JButton button = new JButton(String.valueOf(i));
             button.addActionListener((ActionEvent e) -> MoveButton(button));
             buttons.add(button);
@@ -38,7 +38,7 @@ public class Game extends JFrame {
 
         add(gamePanel);
 
-        setTitle("3x3 puzzle");
+        setTitle("4x4 puzzle");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 400);
         setLocationRelativeTo(null);
@@ -53,7 +53,7 @@ public class Game extends JFrame {
     }
 
     private boolean CheckMoveable(int button1, int button2) {
-        final int size = 3;
+        final int size = 4;
         int row1 = button1 / size;
         int colum1 = button1 % size;
         int row2 = button2 / size;
@@ -85,7 +85,7 @@ public class Game extends JFrame {
     }
 
     private boolean DidIWin() {
-        for (int i = 1; i < 9; i++) {
+        for (int i = 1; i < 15; i++) {
             if (!buttons.get(i - 1).getText().equals(String.valueOf(i))) {
                 return false;
             }
@@ -95,14 +95,14 @@ public class Game extends JFrame {
 
     private void QuickSolve() {
         buttons.clear();
-        for (int i = 1; i < 9; i++) {
+        for (int i = 1; i < 15; i++) {
             JButton button = new JButton(String.valueOf(i));
             button.addActionListener((ActionEvent e) -> MoveButton(button));
             buttons.add(button);
         }
         buttons.add(emptyButton);
         buttonPanel.add(emptyButton);
-        Collections.swap(buttons, 7, 8);
+        Collections.swap(buttons, 13, 14);
         UpdateGamePanel();
     }
 }
