@@ -52,7 +52,7 @@ public class Game extends JFrame {
         UpdateGamePanel();
     }
 
-    private boolean checkMoveable(int button1, int button2) {
+    private boolean CheckMoveable(int button1, int button2) {
         final int size = 3;
         int row1 = button1 / size;
         int colum1 = button1 % size;
@@ -65,10 +65,10 @@ public class Game extends JFrame {
     private void MoveButton(JButton button) {
         int clickedButton = buttons.indexOf(button);
         int textEmpty = buttons.indexOf(emptyButton);
-        if (checkMoveable(clickedButton, textEmpty)) {
+        if (CheckMoveable(clickedButton, textEmpty)) {
             Collections.swap(buttons, clickedButton, textEmpty);
             UpdateGamePanel();
-            if (didIWin()) {
+            if (DidIWin()) {
                 JOptionPane.showMessageDialog(buttonPanel, "Congratulations! You win!");
             }
 
@@ -84,7 +84,7 @@ public class Game extends JFrame {
         gamePanel.repaint();
     }
 
-    private boolean didIWin() {
+    private boolean DidIWin() {
         for (int i = 1; i < 9; i++) {
             if (!buttons.get(i - 1).getText().equals(String.valueOf(i))) {
                 return false;
